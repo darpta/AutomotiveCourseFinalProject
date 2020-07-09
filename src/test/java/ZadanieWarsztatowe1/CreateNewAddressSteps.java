@@ -8,16 +8,15 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class CreateNewAddressSteps {
 
     private WebDriver driver;
-    //NewAddressData newAddressData;
+    NewAddressData newAddressData;
 
     @Given("user is logged in with email (.*) and password (.*)")
-    public void userIsLoggedIn(String email, String password) throws Exception {
+    public void userIsLoggedIn(String email, String password) {
 
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver");
@@ -25,57 +24,35 @@ public class CreateNewAddressSteps {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
-        
-        WebElement emailInput = driver.findElement(By.xpath("//*[@id='login-form']/section/div[1]/div[1]/input"));
-        emailInput.sendKeys(email);
-        WebElement passwordInput = driver.findElement(By.xpath("//*[@id='login-form']/section/div[2]/div[1]/div/input"));
-        passwordInput.sendKeys(password);
 
-        driver.findElement(By.id("submit-login")).click();
+        newAddressData = new NewAddressData(driver);
 
+        newAddressData.loginToAccount(email, password);
     }
 
     @When("^user goes to new address page$")
     public void userGoesToNewAddressPage() {
-
-        WebElement addressPageInput = driver.findElement(By.id("address-link"));
-        addressPageInput.click();
-
-//        WebElement addressPageInput;
-//        if (addressPageInput.isEnabled()){
-//            addressPageInput = driver.findElement(By.id("address-link"));
-//            addressPageInput.click();
-//        }
-//        else{
-//            WebElement addressesInput = driver.findElement(By.xpath("//*[@id='addresses-link']"));
-//            addressesInput.click();
-//        }
-//        driver.get("https://prod-kurs.coderslab.pl/index.php?controller=address");
+        driver.findElement(By.id("address-link")).click();
     }
 
     @And("^alias (.*) is provided by user$")
-    public void aliasAliasIsProvidedByUser(String alias) {
-        //newAddressData.setNewAlias(newAlias);
-        WebElement aliasInput = driver.findElement(By.name("alias"));
-        aliasInput.sendKeys(alias);
+    public void aliasAliasIsProvidedByUser(String newAlias) {
+        newAddressData.setNewAlias(newAlias);
     }
 
     @And("^address (.*) is provided by user$")
-    public void addressIsProvidedByUser(String address) {
-        WebElement addressInput = driver.findElement(By.name("address1"));
-        addressInput.sendKeys(address);
+    public void addressIsProvidedByUser(String newAddress) {
+        newAddressData.setNewAddress(newAddress);
     }
 
     @And("^city (.*) is provided by user$")
-    public void cityIsProvidedByUser(String city) {
-        WebElement cityInput = driver.findElement(By.name("city"));
-        cityInput.sendKeys(city);
+    public void cityIsProvidedByUser(String newCity) {
+        newAddressData.setNewCity(newCity);
     }
 
     @And("^postalCode (.*) is provided by user$")
-    public void postalCodeIsProvidedByUser(String postalCode) {
-        WebElement postalCodeInput = driver.findElement(By.name("postcode"));
-        postalCodeInput.sendKeys(postalCode);
+    public void postalCodeIsProvidedByUser(String newPostalCode) {
+        newAddressData.setNewPostalCode(newPostalCode);
     }
 
     @And("^country United Kingdom is chosen by user$")
@@ -84,25 +61,42 @@ public class CreateNewAddressSteps {
         countryInput.click();
         WebElement countryUKInput = driver.findElement(By.xpath("//*[@id='content']/div/div/form/section/div[10]/div[1]/select/option[2]"));
         countryUKInput.click();
-
     }
 
     @And("^phone number (.*) is provided by user$")
-    public void phoneNumberIsProvidedByUser(String phone) {
-        WebElement phoneInput = driver.findElement(By.name("phone"));
-        phoneInput.sendKeys(phone);
+    public void phoneNumberIsProvidedByUser(String newPhone) {
+        newAddressData.setNewPhone(newPhone);
     }
 
     @And("^user saves new address$")
     public void userSavesNewAddress() {
-
         driver.findElement(By.xpath("//*[@id='content']/div/div/form/footer/button")).click();
 
         WebElement successMessage = driver.findElement(By.xpath("//*[@id='notifications']/div/article/ul/li"));
         Assert.assertEquals("Address successfully added!", successMessage.getText());
-
-//        WebElement addressPage = driver.findElement(By.className(".col-lg-4.col-md-6.col-sm-6"));
-//        addressPage.
-
+        System.out.println(successMessage.getText());
     }
+
+    @And("^user checks if new address is correct$")
+    public void userChecksIfNewAddressIsCorrect() {
+        newAddressData.checkIfAddressIsCorrect();
+    }
+
+    @And("^user deletes new address$")
+    public void userDeletesNewAddress() {
+        driver.findElement(By.partialLinkText("Delete")).click();
+    }
+
+    @And("^user checks if new address is deleted$")
+    public void userChecksIfNewAddressIsDeleted() {
+        WebElement deletesMessage = driver.findElement(By.xpath("//*[@id='notifications']/div/article/ul/li"));
+        Assert.assertEquals("Address successfully deleted!", deletesMessage.getText());
+        System.out.println(deletesMessage.getText());
+    }
+
+    @And("^user signs out$")
+    public void userSignsOut() {
+        driver.findElement(By.xpath("//*[@id='_desktop_user_info']/div/a[1]")).click();
+    }
+
 }

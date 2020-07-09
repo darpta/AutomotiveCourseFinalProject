@@ -10,8 +10,13 @@ Feature: Address Page
     And country United Kingdom is chosen by user
     And phone number <phone> is provided by user
     And user saves new address
+    And user checks if new address is correct
+    And user deletes new address
+    And user checks if new address is deleted
+    And user signs out
+
 
 
     Examples:
       |email              |password |alias   |address     |city     |postalCode |phone      |
-      |jandworak@mail.com |Pass123  |Domowy  |Prosta 23   |Szczecin |70-250     |666777444  |
+      |jurandspych@mail.com |Pass1234  |Domowy  |Prosta 23   |Szczecin |70-250     |666777444  |

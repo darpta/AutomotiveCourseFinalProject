@@ -44,26 +44,27 @@ public class BuyProductData {
         quantityButton.sendKeys("5");
     }
 
-    public boolean checkIfAddressIsCorrect(){
-        //String address;
+    public boolean checkIfAddressIsCorrect() {
 
         List<WebElement> articles = driver.findElements(By.tagName("article"));
         String addressText = "";
-        for (int i=0; i < articles.size(); i++){
-            if (articles.get(i).getText().contains("Domowy")){
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getText().contains("Domowy")) {
                 addressText = articles.get(i).getText();
                 System.out.println(addressText);
             }
         }
-        if(
+        if (
                 addressText.contains("Prosta 23")
                         && addressText.contains("Szczecin")
                         && addressText.contains("70-250")
                         && addressText.contains("United Kingdom")
                         && addressText.contains("666777444")
-        ){
+        ) {
+            System.out.println("true");
             return true;
         }
+        System.out.println("false");
         return false;
     }
 }
