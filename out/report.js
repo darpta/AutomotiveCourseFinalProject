@@ -1,109 +1,111 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/Cucumber/Features/create-new-address.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/Cucumber/Features/buy-product.feature");
 formatter.feature({
   "line": 1,
-  "name": "Address Page",
+  "name": "User buys product",
   "description": "",
-  "id": "address-page",
+  "id": "user-buys-product",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "line": 3,
-  "name": "Adding new user address",
+  "line": 2,
+  "name": "Logged in user buys sweater",
   "description": "",
-  "id": "address-page;adding-new-user-address",
+  "id": "user-buys-product;logged-in-user-buys-sweater",
   "type": "scenario_outline",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 4,
+  "line": 3,
   "name": "user is logged in with email \u003cemail\u003e and password \u003cpassword\u003e",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 5,
-  "name": "user goes to new address page",
+  "line": 4,
+  "name": "user chooses product \u003cproductName\u003e",
   "keyword": "When "
 });
 formatter.step({
+  "line": 5,
+  "name": "user chooses size of product",
+  "keyword": "And "
+});
+formatter.step({
   "line": 6,
-  "name": "alias \u003calias\u003e is provided by user",
+  "name": "user chooses quantity of product",
   "keyword": "And "
 });
 formatter.step({
   "line": 7,
-  "name": "address \u003caddress\u003e is provided by user",
+  "name": "user adds products to the cart",
   "keyword": "And "
 });
 formatter.step({
   "line": 8,
-  "name": "city \u003ccity\u003e is provided by user",
+  "name": "user goes to checkout",
   "keyword": "And "
 });
 formatter.step({
   "line": 9,
-  "name": "postalCode \u003cpostalCode\u003e is provided by user",
+  "name": "user confirms address",
   "keyword": "And "
 });
 formatter.step({
   "line": 10,
-  "name": "country United Kingdom is chosen by user",
+  "name": "user chooses shipping method as PrestaShop",
   "keyword": "And "
 });
 formatter.step({
   "line": 11,
-  "name": "phone number \u003cphone\u003e is provided by user",
+  "name": "user chooses payment method as Pay by Check",
   "keyword": "And "
 });
 formatter.step({
   "line": 12,
-  "name": "user saves new address",
+  "name": "user chooses order with an obligation to pay",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 13,
+  "name": "user does a print screen",
   "keyword": "And "
 });
 formatter.examples({
   "line": 15,
   "name": "",
   "description": "",
-  "id": "address-page;adding-new-user-address;",
+  "id": "user-buys-product;logged-in-user-buys-sweater;",
   "rows": [
     {
       "cells": [
         "email",
         "password",
-        "alias",
-        "address",
-        "city",
-        "postalCode",
-        "phone"
+        "productName"
       ],
       "line": 16,
-      "id": "address-page;adding-new-user-address;;1"
+      "id": "user-buys-product;logged-in-user-buys-sweater;;1"
     },
     {
       "cells": [
         "jandworak@mail.com",
         "Pass123",
-        "Domowy",
-        "Prosta 23",
-        "Szczecin",
-        "70-250",
-        "666777444"
+        "Hummingbird printed sweater"
       ],
       "line": 17,
-      "id": "address-page;adding-new-user-address;;2"
+      "id": "user-buys-product;logged-in-user-buys-sweater;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.scenario({
   "line": 17,
-  "name": "Adding new user address",
+  "name": "Logged in user buys sweater",
   "description": "",
-  "id": "address-page;adding-new-user-address;;2",
+  "id": "user-buys-product;logged-in-user-buys-sweater;;2",
   "type": "scenario",
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 4,
+  "line": 3,
   "name": "user is logged in with email jandworak@mail.com and password Pass123",
   "matchedColumns": [
     0,
@@ -112,58 +114,56 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.step({
-  "line": 5,
-  "name": "user goes to new address page",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 6,
-  "name": "alias Domowy is provided by user",
+  "line": 4,
+  "name": "user chooses product Hummingbird printed sweater",
   "matchedColumns": [
     2
   ],
+  "keyword": "When "
+});
+formatter.step({
+  "line": 5,
+  "name": "user chooses size of product",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 6,
+  "name": "user chooses quantity of product",
   "keyword": "And "
 });
 formatter.step({
   "line": 7,
-  "name": "address Prosta 23 is provided by user",
-  "matchedColumns": [
-    3
-  ],
+  "name": "user adds products to the cart",
   "keyword": "And "
 });
 formatter.step({
   "line": 8,
-  "name": "city Szczecin is provided by user",
-  "matchedColumns": [
-    4
-  ],
+  "name": "user goes to checkout",
   "keyword": "And "
 });
 formatter.step({
   "line": 9,
-  "name": "postalCode 70-250 is provided by user",
-  "matchedColumns": [
-    5
-  ],
+  "name": "user confirms address",
   "keyword": "And "
 });
 formatter.step({
   "line": 10,
-  "name": "country United Kingdom is chosen by user",
+  "name": "user chooses shipping method as PrestaShop",
   "keyword": "And "
 });
 formatter.step({
   "line": 11,
-  "name": "phone number 666777444 is provided by user",
-  "matchedColumns": [
-    6
-  ],
+  "name": "user chooses payment method as Pay by Check",
   "keyword": "And "
 });
 formatter.step({
   "line": 12,
-  "name": "user saves new address",
+  "name": "user chooses order with an obligation to pay",
+  "keyword": "And "
+});
+formatter.step({
+  "line": 13,
+  "name": "user does a print screen",
   "keyword": "And "
 });
 formatter.match({
@@ -177,96 +177,86 @@ formatter.match({
       "offset": 61
     }
   ],
-  "location": "CreateNewAddressSteps.userIsLoggedIn(String,String)"
+  "location": "BuyProductSteps.userIsLoggedIn(String,String)"
 });
 formatter.result({
-  "duration": 3024411164,
-  "status": "passed"
-});
-formatter.match({
-  "location": "CreateNewAddressSteps.userGoesToNewAddressPage()"
-});
-formatter.result({
-  "duration": 327307969,
+  "duration": 3626432219,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "Domowy",
-      "offset": 6
+      "val": "Hummingbird printed sweater",
+      "offset": 21
     }
   ],
-  "location": "CreateNewAddressSteps.aliasAliasIsProvidedByUser(String)"
+  "location": "BuyProductSteps.userGoesToAllProducts(String)"
 });
 formatter.result({
-  "duration": 66553033,
+  "duration": 1386389195,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "Prosta 23",
-      "offset": 8
-    }
-  ],
-  "location": "CreateNewAddressSteps.addressIsProvidedByUser(String)"
+  "location": "BuyProductSteps.userChoosesSizeSizeOfProduct()"
 });
 formatter.result({
-  "duration": 66926524,
+  "duration": 399996651,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "Szczecin",
-      "offset": 5
-    }
-  ],
-  "location": "CreateNewAddressSteps.cityIsProvidedByUser(String)"
+  "location": "BuyProductSteps.userChoosesQuantityQuantityOfProduct()"
 });
 formatter.result({
-  "duration": 64332948,
+  "duration": 410353533,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "70-250",
-      "offset": 11
-    }
-  ],
-  "location": "CreateNewAddressSteps.postalCodeIsProvidedByUser(String)"
+  "location": "BuyProductSteps.userAddsProductsToTheCart()"
 });
 formatter.result({
-  "duration": 54961299,
+  "duration": 85689422,
   "status": "passed"
 });
 formatter.match({
-  "location": "CreateNewAddressSteps.countryIsChosenByUser()"
+  "location": "BuyProductSteps.userGoesToCheckout()"
 });
 formatter.result({
-  "duration": 356008214,
+  "duration": 2228013598,
   "status": "passed"
 });
 formatter.match({
-  "arguments": [
-    {
-      "val": "666777444",
-      "offset": 13
-    }
-  ],
-  "location": "CreateNewAddressSteps.phoneNumberIsProvidedByUser(String)"
+  "location": "BuyProductSteps.userConfirmsAddress()"
 });
 formatter.result({
-  "duration": 312365388,
+  "duration": 974107793,
   "status": "passed"
 });
 formatter.match({
-  "location": "CreateNewAddressSteps.userSavesNewAddress()"
+  "location": "BuyProductSteps.userChoosesShippingMethodAsPrestaShop()"
 });
 formatter.result({
-  "duration": 486213211,
+  "duration": 27026,
+  "status": "passed"
+});
+formatter.match({
+  "location": "BuyProductSteps.userChoosesPaymentMethodAsPayByCheck()"
+});
+formatter.result({
+  "duration": 32270,
+  "status": "passed"
+});
+formatter.match({
+  "location": "BuyProductSteps.userChoosesOrderWithAnObligationToPay()"
+});
+formatter.result({
+  "duration": 42759,
+  "status": "passed"
+});
+formatter.match({
+  "location": "BuyProductSteps.userDoesAPrintScreen()"
+});
+formatter.result({
+  "duration": 77304,
   "status": "passed"
 });
 });
