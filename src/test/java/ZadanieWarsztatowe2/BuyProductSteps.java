@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -64,23 +65,32 @@ public class BuyProductSteps{
 
     @And("^user confirms address$")
     public void userConfirmsAddress() {
-        buyProductData.checkIfAddressIsCorrect();
+        //buyProductData.checkIfAddressIsCorrect();
         driver.findElement(By.name("confirm-addresses")).click();
     }
 
     @And("^user chooses shipping method as PrestaShop$")
     public void userChoosesShippingMethodAsPrestaShop() {
+        driver.findElement(By.name("confirmDeliveryOption")).click();
     }
 
     @And("^user chooses payment method as Pay by Check$")
     public void userChoosesPaymentMethodAsPayByCheck() {
+        driver.findElement(By.id("payment-option-1")).click();
+        driver.findElement(By.name("conditions_to_approve[terms-and-conditions]")).click();
     }
 
     @And("^user chooses order with an obligation to pay$")
     public void userChoosesOrderWithAnObligationToPay() {
+        driver.findElement(By.xpath("//*[@id='payment-confirmation']/div[1]/button")).click();
     }
 
     @And("^user does a print screen$")
     public void userDoesAPrintScreen() {
+        try {
+            buyProductData.takeSnapShot();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

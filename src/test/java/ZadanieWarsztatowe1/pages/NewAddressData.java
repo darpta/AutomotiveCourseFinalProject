@@ -76,6 +76,7 @@ public class NewAddressData {
         for (int i = 0; i < articles.size(); i++) {
             if (articles.get(i).getText().contains("Domowy")) {
                 addressText = articles.get(i).getText();
+                //System.out.println(addressText);
             }
         }
         if (
